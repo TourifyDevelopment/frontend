@@ -1,0 +1,42 @@
+/*
+.section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.section > div {
+    width:  50vmin;
+}
+
+h1 {
+    margin: 20px 0px;
+}
+
+img {
+    height: 10vh;
+}
+
+input {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+button {
+	color: white;
+	border: none;
+	padding: 8px 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    background-color: var(--primary-clr);
+    width: 100%;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: var(--primary-hover-clr);
+}
+*/

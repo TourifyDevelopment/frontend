@@ -8,4 +8,4 @@ export class Documentation extends Component {
   }
 }
 
-export default Documentation
+export default Documentation;

@@ -8,4 +8,4 @@ export class Editor extends Component {
   }
 }
 
-export default Editor
+export default Editor;
