@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BrowserRouter, Switch, Route, Link, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Link, Routes } from 'react-router-dom';
 import Register from './screens/Register';
 import Login from './screens/Login';
 import LandingPage from './screens/LandingPage';
