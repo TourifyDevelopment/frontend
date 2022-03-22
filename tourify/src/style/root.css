@@ -1,13 +1,13 @@
 :root {
     --primary-clr: #4053A9;
     --primary-hover-clr: #5C6CB6;
+    --secondary-clr: #8379ee;
 }
 
 * {
     padding: 0;
     margin: 0;
 }
-
 
 input {
     display: block;

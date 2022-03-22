@@ -1,0 +1,19 @@
+.primary-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 80px;
+    background-image: radial-gradient(circle at top left, var(--primary-clr), var(--secondary-clr));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.accent-btn {
+    padding: 4px 8px;
+    border: 4px solid transparent;
+    border-radius: 200px;
+    background-image: linear-gradient(white, white), radial-gradient(circle at top left, var(--primary-clr), var(--secondary-clr));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}

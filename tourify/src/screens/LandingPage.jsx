@@ -1,18 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../assets/images/logo-text.png';
+import '../style/buttons.css'
 
-export class LandingPage extends Component {
+class LandingPage extends Component {
   render() {
     return (
-      <nav>
-        <div className="absolute left-2 top-2">
-          <img src="" alt="" />
-        </div>
-        <div className="absolute right-2 top-2 flex justify-end">
-          <div className="rounded-md px-4 py-2">
-            Documentation
+      <nav className='flex justify-between w-screen mt-2 px-2'>
+        <img src={logo} alt="tourify" className='h-24 w-auto'/>
+        
+        <div className="flex justify-end items-center">
+          <div className="accent-btn mr-3">
+            <Link to='/doc' className='focus-visible:outline-none'>Documentation</Link>
           </div>
-          <div className="rounded-md px-4 py-2">
-            Get started
+          <div className="primary-btn">
+            <Link to='/login' className='focus-visible:outline-none'>Get started</Link>
           </div>
         </div>
       </nav>
