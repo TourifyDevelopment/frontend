@@ -4,7 +4,7 @@ import '../../style/Editor.css'
 export class Heading extends Component {
   render() {
     return (
-      <h1>Heading</h1>
+      <div><h1>Heading</h1></div>
     )
   }
 }

@@ -3,8 +3,10 @@ import React, { useState } from 'react'
 import { useDroppable } from '@dnd-kit/core';
 import { useDraggable } from '@dnd-kit/core';
 import { DndContext } from '@dnd-kit/core';
+import { ResizableBox } from 'react-resizable';
 
 import Heading from '../components/editor/Heading'
+import Image from '../components/editor/Image';
 
 function Droppable(props) {
   const { isOver, setNodeRef } = useDroppable({
@@ -24,7 +26,7 @@ function Droppable(props) {
 
 function Draggable(props) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: 'draggable',
+    id: props.id,
   });
   const style = transform ? {
     transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
@@ -33,7 +35,7 @@ function Draggable(props) {
 
   return (
     <button ref={setNodeRef} style={style} {...listeners} {...attributes}>
-      <Heading></Heading>
+      {props.children}
     </button>
   );
 }
@@ -41,17 +43,19 @@ function Draggable(props) {
 function Editor() {
   const [isDropped, setIsDropped] = useState(false);
   const draggableMarkup = (
-    <Draggable>Drag me</Draggable>
+    <Draggable id="test"><Heading /></Draggable>
   );
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
       <div className='holder'>
         <div className='left'>
-          {draggableMarkup}
+          {/*Templates*/}
+          <Draggable id="test2"><Heading /></Draggable>
+          <Draggable id="test3"><Image /></Draggable>
         </div>
         <Droppable>
-          {isDropped ? draggableMarkup : 'Drop here'}
+          {isDropped ? <ResizableBox><Heading /></ResizableBox> : 'Drop here'}
         </Droppable>
       </div>
     </DndContext>
