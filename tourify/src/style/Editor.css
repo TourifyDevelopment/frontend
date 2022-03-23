@@ -12,7 +12,6 @@ h1 {
 
 .left {
     background-color: var(--second-clr);
-    height: 100%;
     max-width: 25%;
     flex: 1
 }
@@ -21,10 +20,4 @@ h1 {
     height: 100%;
     max-width: 75%;
     flex: 1
-}
-
-.holder {
-    display: flex;
-    height: 100%;
-    width: 100%;
 }

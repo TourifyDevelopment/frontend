@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { useDroppable } from '@dnd-kit/core';
 import { useDraggable } from '@dnd-kit/core';
 import { DndContext } from '@dnd-kit/core';
-import { ResizableBox } from 'react-resizable';
 
 import Heading from '../components/editor/Heading'
 import Image from '../components/editor/Image';
@@ -42,20 +41,21 @@ function Draggable(props) {
 
 function Editor() {
   const [isDropped, setIsDropped] = useState(false);
-  const draggableMarkup = (
+  let counter = 0;
+  /*const draggableMarkup = (
     <Draggable id="test"><Heading /></Draggable>
-  );
+  );*/
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
-      <div className='holder'>
-        <div className='left'>
+      <div className='flex h-screen w-full'>
+        <div className='left h-full'>
           {/*Templates*/}
           <Draggable id="test2"><Heading /></Draggable>
           <Draggable id="test3"><Image /></Draggable>
         </div>
         <Droppable>
-          {isDropped ? <ResizableBox><Heading /></ResizableBox> : 'Drop here'}
+          {isDropped ? <Draggable id={counter}>TestComp für verschiebung</Draggable> : 'Drop here'}
         </Droppable>
       </div>
     </DndContext>
@@ -63,7 +63,9 @@ function Editor() {
 
   function handleDragEnd(event) {
     if (event.over && event.over.id === 'droppable') {
+      console.log(event)
       setIsDropped(true);
+      counter++;
     }
   }
 }
