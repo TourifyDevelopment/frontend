@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useDrop } from 'react-dnd';
-import Title from './Title';
-import Text from './Text'
-import { TemplateTypes, TemplateTypeList } from './TemplateTypes';
+import Title from './templates/Title';
+import Text from './templates/Text'
+import Container from './templates/Container'
+import { TemplateTypes, TemplateTypeList } from '../../models/editor/TemplateTypes';
 
 
 function Sheet(props) {
@@ -33,10 +34,10 @@ function Sheet(props) {
         switch (type) {
             case TemplateTypes.TITLE:
                 return (<div key={key}><Title></Title></div>)
-            case TemplateTypes.SUBTITLE:
-                return <div key={key}><Text></Text></div>;
             case TemplateTypes.TEXT:
                 return <div key={key}><Text></Text></div>;
+            case TemplateTypes.CONTAINER:
+                return <div key={key}><Container></Container></div>;
         }
     } 
 
@@ -51,7 +52,7 @@ function Sheet(props) {
     }
 
     return (
-        <div ref={drop} className="w-3/5 h-4/5 bg-white">
+        <div ref={drop} className="w-3/5 h-4/5 bg-white flex flex-col">
             {renderContainers()}
         </div>
     )
