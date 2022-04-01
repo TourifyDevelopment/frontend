@@ -1,0 +1,9 @@
+.dissappear {
+    animation: dissappear-anim 250ms ease;
+}
+
+@keyframes dissappear-anim {
+    to {
+        width: 0%;
+    }
+}

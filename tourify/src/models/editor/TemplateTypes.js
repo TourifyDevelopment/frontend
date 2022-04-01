@@ -1,4 +1,4 @@
-export const TemplateTypes = {
+export const templateTypes = {
     TITLE: 'Title',
     TEXT: 'Text',
     IMAGE: 'Image',
@@ -7,11 +7,11 @@ export const TemplateTypes = {
     CONTAINER: 'Container',
 }
 
-export const TemplateTypeList = [
-    TemplateTypes.TITLE,
-    TemplateTypes.TEXT,
-    TemplateTypes.IMAGE,
-    TemplateTypes.VIDEO,
-    TemplateTypes.LINK,
-    TemplateTypes.CONTAINER,
+export const templateTypeList = [
+    templateTypes.TITLE,
+    templateTypes.TEXT,
+    templateTypes.IMAGE,
+    templateTypes.VIDEO,
+    templateTypes.LINK,
+    templateTypes.CONTAINER,
 ]

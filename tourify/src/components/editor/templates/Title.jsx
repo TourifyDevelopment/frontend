@@ -1,5 +1,5 @@
 import React from 'react'
-import { getTitleProperties } from '../../../models/editor/TitleProperties';
+import { getTitleProperties } from '../../../models/editor/titleProperties';
 import EditorInput from '../EditorInput';
 
 function Title(props) {

@@ -1,4 +1,4 @@
-import { getContainerProperties, getFontProperties, getLayoutProperties } from "./Properties";
+import { getContainerProperties, getFontProperties, getLayoutProperties } from "./properties";
 
 export const getTitleProperties = () => _titleProperties;
 
@@ -9,5 +9,5 @@ const _titleProperties = {
     fontSize: "2rem",
     fontWeight: "bold",
     textDecorationLine: "underline",
-    
 }
+

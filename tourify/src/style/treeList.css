@@ -1,0 +1,16 @@
+.heading {
+    cursor: pointer;
+    user-select: none;
+}
+
+.heading-down {
+    transform: rotate(90deg);
+}
+
+.nested {
+    display: none;
+}
+
+.active {
+    display: block;
+}

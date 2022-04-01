@@ -3,7 +3,7 @@ import { useDrop } from 'react-dnd';
 import Title from './templates/Title';
 import Text from './templates/Text'
 import Container from './templates/Container'
-import { TemplateTypes, TemplateTypeList } from '../../models/editor/TemplateTypes';
+import { templateTypes, templateTypeList } from '../../models/editor/templateTypes';
 
 
 function Sheet(props) {
@@ -11,7 +11,7 @@ function Sheet(props) {
 
     const [{ isOver }, drop] = useDrop(
         () => ({
-            accept: TemplateTypeList,
+            accept: templateTypeList,
             drop(_item, monitor) {
                 const type = monitor.getItemType();
                 console.log("dropped");
@@ -32,11 +32,11 @@ function Sheet(props) {
 
     const renderContainer = (type, key) => { 
         switch (type) {
-            case TemplateTypes.TITLE:
+            case templateTypes.TITLE:
                 return (<div key={key}><Title></Title></div>)
-            case TemplateTypes.TEXT:
+            case templateTypes.TEXT:
                 return <div key={key}><Text></Text></div>;
-            case TemplateTypes.CONTAINER:
+            case templateTypes.CONTAINER:
                 return <div key={key}><Container></Container></div>;
         }
     } 
@@ -52,7 +52,7 @@ function Sheet(props) {
     }
 
     return (
-        <div ref={drop} className="w-3/5 h-4/5 bg-white flex flex-col">
+        <div ref={drop} className="w-4/5 h-4/5 bg-white flex flex-col overflow-y-scroll">
             {renderContainers()}
         </div>
     )

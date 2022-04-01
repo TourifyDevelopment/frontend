@@ -1,19 +1,21 @@
-import { faBlackboard } from "@fortawesome/free-solid-svg-icons";
-
 export const getFontProperties = () => _fontProperties;
 export const getLayoutProperties = () => _layoutProperties;
 export const getContainerProperties = () => _containerProperties;
+export const getPropertiesStructure = () => _propertiesStructure;
 
 const _fontProperties = {
-    fontSize : "1rem",
+    fontSize: "16px",
     color: "black",
-    fontWeight : "normal",
+    fontWeight: "normal",
     textDecorationLine: "none",
 }
 
 const _layoutProperties = {
     display: "flex",
-    padding: "0.5rem 0.5rem",
+    paddingLeft: '8px',
+    paddingRight: '8px',
+    paddingTop: '8px',
+    paddingBottom: '8px',
     justifyContent: "start",
 }
 
@@ -24,4 +26,28 @@ const _containerProperties = {
     outlineTopWidth: 0,
     outlineBottomWidth: 0,
     outlineColor: "#D1D5DB",
+}
+
+const _propertiesStructure = {
+    layout: {
+        'paddingLeft': 'input',
+        'paddingRight': 'input',
+        'paddingBottom': 'input',
+        'paddingTop': 'input',
+        'marginLeft' : 'input',
+        'marginRight' : 'input',
+        'marginBottom' : 'input',
+        'marginTop' : 'input',
+    },
+    container: {
+        'backgroundColor' : 'color',
+        'outlineRightWidth' : 'input',
+    },
+    font: {
+        'fontSize' : 'input',
+        'color' : 'color',
+        'fontWeight' : 'radio',
+        'FontStyle' : 'radio',
+        'textDecorationLine' : 'radio',
+    }
 }
