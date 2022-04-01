@@ -1,19 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDrop } from 'react-dnd';
 import Title from './templates/Title';
 import Text from './templates/Text'
 import Container from './templates/Container'
 import { templateTypes, templateTypeList } from '../../models/editor/templateTypes';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContainer, selectContainer } from '../../features/slices/containerSlice';
 
 
 function Sheet(props) {
-    const [containerList, setContainerList] = useState([]);
+    const containerList = useSelector(selectContainer);
+    const dispatch = useDispatch()
+    let counter = 0;
 
     const [{ isOver }, drop] = useDrop(
         () => ({
             accept: templateTypeList,
             drop(_item, monitor) {
                 const type = monitor.getItemType();
+                
                 console.log("dropped");
                 addTemplateToContainerList(type);
                 
@@ -26,27 +31,28 @@ function Sheet(props) {
     );
 
     const addTemplateToContainerList = (type) => {  
-        containerList.push(type);
-        setContainerList(containerList);
+        dispatch(addContainer({type, id: counter}))
+        counter++;
+        
     }
 
     const renderContainer = (type, key) => { 
+        console.log(key)
         switch (type) {
             case templateTypes.TITLE:
-                return (<div key={key}><Title></Title></div>)
+                return <Title id={key}></Title>
             case templateTypes.TEXT:
-                return <div key={key}><Text></Text></div>;
+                return <Text id={key}></Text>
             case templateTypes.CONTAINER:
-                return <div key={key}><Container></Container></div>;
+                return <Container id={key}></Container>
         }
     } 
 
     const renderContainers = () => {
-        let list;
-        let counter = 0;
-        list = containerList.map((c) => {
+
+        const list = containerList.map((c) => {
             counter++;
-            return renderContainer(c, counter)
+            return renderContainer(c.type, c.id)
         })
         return list;
     }

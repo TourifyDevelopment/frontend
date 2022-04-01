@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import propertiesReducer from './slices/propertySlice';
+import containerReducer from './slices/containerSlice';
 
 export default configureStore({
     reducer: {
-        properties: propertiesReducer
+        container: containerReducer
     }
 })

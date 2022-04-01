@@ -6,16 +6,22 @@ import { useSensor } from '@dnd-kit/core'
 import { SortableContext, useSortable } from '@dnd-kit/sortable'
 import { PointerSensor } from '@dnd-kit/core';
 import {CSS} from '@dnd-kit/utilities'
+import { useSelector } from 'react-redux'
+import { selectContainer } from '../../features/slices/containerSlice'
 
 function Toolbar() {
+  const containerList = useSelector(selectContainer);
   const sensors = useSensor(PointerSensor)
 
-  const getComponents = () => {
-    const comps = [];
-    for (let i = 0; i < 5; i++) {
-      comps.push((<Item key={i} text={'test' + i}/>))
-    }
-    return comps;
+  const renderContainer = () => {
+    console.log(containerList);
+    const list =  containerList.map((container) => 
+
+      //TODO: Check if container is Selected and then do something
+      (<p className={container.isSelected ? "bg-blue" : undefined}>{container.type}</p>)
+    )
+    
+    return list;
   }
 
   const handleDragEnd = () => {
@@ -34,11 +40,8 @@ function Toolbar() {
         <Template img={logo} type={templateTypes.CONTAINER}></Template>
       </div>
 
-      <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
-        <SortableContext>
-          {getComponents}
-        </SortableContext>
-      </DndContext>
+
+      {renderContainer()}
 
     </div>
 
