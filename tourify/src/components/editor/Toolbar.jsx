@@ -1,5 +1,5 @@
 import React from 'react'
-import { TemplateTypes } from '../../models/editor/TemplateTypes'
+import { TemplateTypes } from '../../models/editor/templateTypes'
 import logo from '../../assets/images/logo.png'
 import { useDrag } from 'react-dnd'
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { Resizable } from 'react-resizable';
 import profilePic from '../assets/images/dummy_avatar.png'
-import getProjects from '../models/Projects';
+import getProjects from '../models/projects';
 import Project from '../components/Project';
 
 class Projects extends Component {

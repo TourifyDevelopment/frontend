@@ -3,7 +3,7 @@ import { useDrop } from 'react-dnd';
 import Title from './templates/Title';
 import Text from './templates/Text'
 import Container from './templates/Container'
-import { TemplateTypes, TemplateTypeList } from '../../models/editor/TemplateTypes';
+import { TemplateTypes, TemplateTypeList } from '../../models/editor/templateTypes';
 
 
 function Sheet(props) {
