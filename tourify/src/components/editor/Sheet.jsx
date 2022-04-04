@@ -3,7 +3,7 @@ import { useDrop } from 'react-dnd';
 import Title from './templates/Title';
 import Text from './templates/Text'
 import Container from './templates/Container'
-import { templateTypes, templateTypeList } from '../../models/editor/TemplateTypes';
+import { templateTypes, templateTypeList } from '../../models/editor/templateTypes';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContainer, selectContainer } from '../../features/slices/containerSlice';
 

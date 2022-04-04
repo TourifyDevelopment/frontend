@@ -1,5 +1,5 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { getPropertiesByType } from "../../models/editor/TemplateTypes";
+import { getPropertiesByType } from "../../models/editor/templateTypes";
 
 export const containerSlice = createSlice({
     name: 'container',

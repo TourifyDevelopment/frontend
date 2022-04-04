@@ -1,5 +1,5 @@
 import React from 'react'
-import { templateTypes } from '../../models/editor/TemplateTypes'
+import { templateTypes } from '../../models/editor/templateTypes'
 import logo from '../../assets/images/logo.png'
 import { DndContext, useDrag } from 'react-dnd'
 import { useSensor } from '@dnd-kit/core'

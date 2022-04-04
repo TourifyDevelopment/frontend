@@ -1,5 +1,5 @@
-import { getTextProperties } from "./TextProperties"
-import { getTitleProperties } from "./TitleProperties"
+import { getTextProperties } from "./textProperties"
+import { getTitleProperties } from "./titleProperties"
 
 export const templateTypes = {
     TITLE: 'Title',
