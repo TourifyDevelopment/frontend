@@ -1,4 +1,4 @@
-import { getContainerProperties, getFontProperties, getLayoutProperties } from "./properties";
+import { getContainerProperties, getFontProperties, getLayoutProperties } from "./Properties";
 
 export const getTitleProperties = () => _titleProperties;
 
