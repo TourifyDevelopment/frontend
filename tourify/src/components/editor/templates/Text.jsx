@@ -1,5 +1,5 @@
 import React from 'react'
-import { getTextProperties } from '../../../models/editor/textProperties'
+import { getTextProperties } from '../../../models/editor/TextProperties'
 import EditorInput from '../EditorInput'
 
 function Text(props) {

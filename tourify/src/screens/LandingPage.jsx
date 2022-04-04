@@ -11,7 +11,7 @@ class LandingPage extends Component {
         
         <div className="flex justify-end items-center">
           <div className="accent-btn mr-3">
-            <Link to='/doc' className='focus-visible:outline-none'>Documentation</Link>
+            <Link to='/docs' className='focus-visible:outline-none'>Documentation</Link>
           </div>
           <div className="primary-btn">
             <Link to='/login' className='focus-visible:outline-none'>Get started</Link>

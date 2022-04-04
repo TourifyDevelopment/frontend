@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSelected } from '../../features/slices/containerSlice';
-import { getPropertiesStructure } from '../../models/editor/properties';
-import { getTitleProperties } from '../../models/editor/titleProperties';
+import { getPropertiesStructure } from '../../models/editor/Properties';
+import { getTitleProperties } from '../../models/editor/TitleProperties';
 import '../../style/animations.css';
 import TreeView, { TreeHeading } from '../TreeView';
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { getTitleProperties } from '../../../models/editor/titleProperties';
+import { getTitleProperties } from '../../../models/editor/TitleProperties';
 import { select } from '../../../features/slices/containerSlice';
 import EditorInput from '../EditorInput';
 
