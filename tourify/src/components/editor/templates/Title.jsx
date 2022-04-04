@@ -1,7 +1,11 @@
 import React from 'react'
+<<<<<<< HEAD
 import { useDispatch } from 'react-redux';
 import { getTitleProperties } from '../../../models/editor/titleProperties';
 import { select } from '../../../features/slices/containerSlice';
+=======
+import { getTitleProperties } from '../../../models/editor/titleProperties';
+>>>>>>> master
 import EditorInput from '../EditorInput';
 
 function Title(props) {
