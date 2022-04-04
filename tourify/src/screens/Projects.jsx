@@ -19,13 +19,15 @@ class Projects extends Component {
       projects: [],
       showModal: false,
       projectNameInput: '',
-      projectDescInput: ''
+      projectDescInput: '',
+      user: {}
     }
   }
 
   componentDidMount() {
     authChecker.check().then((isAuthenticated) => {
       if (isAuthenticated) {
+        this.setState({user: isAuthenticated})
         getProfilePic().then((data) => {
           console.log(data);
           console.log(isAuthenticated)
@@ -38,6 +40,7 @@ class Projects extends Component {
           this.setState({ sidebar: <SidebarLoggedIn profilePic={profPic} user={isAuthenticated} /> })
         })
       } else {
+        this.setState({user: {}})
         this.setState({ sidebar: <SidebarNotLoggedIn /> })
       }
     });
@@ -72,18 +75,11 @@ class Projects extends Component {
       <div className='flex'>
         <div className="flex flex-col items-center py-12 px-6 space-y-8">
           {this.state.sidebar}
-          <button
-            className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-            type="button"
-            onClick={() => this.setState({ showModal: true })}
-          >
-            Open regular modal
-          </button>
         </div>
 
         <div className="h-screen border-l border-grey-600 p-12 flex flex-wrap">
           {
-            this.state.projects.map((p) => <Project project={p} />)
+            this.state.projects.map((p) => <Project project={p} user={this.state.user} />)
           }
         </div>
         {this.state.showModal ? (

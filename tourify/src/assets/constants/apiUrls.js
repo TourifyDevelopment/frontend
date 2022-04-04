@@ -6,6 +6,7 @@ const _registerUrl = `${_authUrl}/register`;
 const _loginUrl = `${_authUrl}/login`;
 const _projectUrl = `${_apiUrl}/projects`;
 const _pagesUrl = `${_apiUrl}/pages/`;
+const _containerUrl = `${_apiUrl}/container/`
 
 const _validateUrl = `${_apiUrl}/user/valid`;
 
@@ -17,6 +18,7 @@ export const registerUrl = () => _registerUrl;
 export const loginUrl = () => _loginUrl;
 export const projectUrl = () => _projectUrl;
 export const pagesUrl = projectId => _pagesUrl + projectId;
+export const containerUrl = pageId => _containerUrl + pageId;
 export const validateUrl = () => _validateUrl;
 export const profilePicUrl = () => _profilePicUrl;
 

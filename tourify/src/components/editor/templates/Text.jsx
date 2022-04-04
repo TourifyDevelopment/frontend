@@ -3,15 +3,12 @@ import { getTextProperties } from '../../../models/editor/textProperties'
 import EditorInput from '../EditorInput'
 
 function Text(props) {
-
     const style = getTextProperties();
 
     return (
         <div style={style} className='flex flex-col'>
             <EditorInput value={"HIER TEXT EINFUEGEN"}/>
         </div>
-        
-        
     )
 }
 
