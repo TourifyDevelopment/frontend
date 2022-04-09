@@ -4,13 +4,18 @@ import tut1 from "../assets/images/tutorial1.png"
 import tut2 from "../assets/images/tut2.png"
 import tut3 from "../assets/images/tut3.png"
 import tut4 from "../assets/images/tut4.png"
+import logo from '../assets/images/logo-text.png';
 
 class Documentation extends Component {
   render() {
     return (
       <div className="flex justify-center">
-        <div className="w-full h-full column-1 bg-[#4053A9] rounded-lg flex-col flex ">
-          <p className="text-center text-5xl text-white mb-5 mt-3">Anleitung zur Erstellung eigener Touren</p>
+        <div className="w-full h-full column-1 bg-[#4053A9] flex-col flex ">
+          <div className='flex justify-between'>
+            <a href="http://localhost:3000"><img src={logo} alt="tourify" className='h-24 w-auto mt-2 ml-2'/></a>
+            <p className="text-center text-5xl text-white mb-5 mt-3">Anleitung zur Erstellung eigener Touren</p>
+            <div></div>
+          </div>
 
           <div className="w-1/2 self-center">
 
