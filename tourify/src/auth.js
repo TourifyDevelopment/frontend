@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { validateUrl, profilePicUrl, projectUrl, pagesUrl, containerUrl } from './assets/constants/apiUrls';
+import { validateUrl, profilePicUrl, projectUrl, pagesUrl, containerUrl, resourcesUrl } from './assets/constants/apiUrls';
 
 const authChecker = {
     async check() {
@@ -71,4 +71,13 @@ const getContainersOfPage = async pageId => {
     return false
 }
 
-export { authChecker, getProfilePic, createNewProject, getPagesOfProject, getContainersOfPage };
+const getResourcesOfContainer = async containerId => {
+    let res = await axios.get(resourcesUrl(containerId))
+
+    if (res.status === 200) {
+        return res;
+    }
+    return false
+}
+
+export { authChecker, getProfilePic, createNewProject, getPagesOfProject, getContainersOfPage, getResourcesOfContainer };

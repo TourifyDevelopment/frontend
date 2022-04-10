@@ -36,7 +36,7 @@ class Projects extends Component {
             type="button"
             onClick={() => this.setState({ showModal: true })}
           >
-            Open regular modal
+            Neues Projekt erstellen
           </button>
         })
         getProfilePic().then((data) => {
@@ -131,13 +131,13 @@ class Projects extends Component {
                   {/*header*/}
                   <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                     <h3 className="text-3xl font-semibold">
-                      Modal Title
+                      Neues Projekt
                     </h3>
                   </div>
                   {/*body*/}
                   <div className="relative p-6 flex-auto">
                     <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                      In diesem Popup kannst du ein neues Projekt erstellen. Dir steht ein Titel und eine Beschreibung für dein Projekt zur Verfügung!
+                      In diesem Popup kannst du ein neues Projekt erstellen. Dir steht ein Titel, eine Beschreibung und noch eine Foto (Map) für dein Projekt zur Verfügung!
                     </p>
                     <div class="md:w-1/3">
                       <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
@@ -172,14 +172,14 @@ class Projects extends Component {
                       type="button"
                       onClick={() => this.setState({ showModal: false })}
                     >
-                      Close
+                      Schließen
                     </button>
                     <button
                       className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={() => this.handleNewProject()}
                     >
-                      Save Changes
+                      Speichern
                     </button>
                   </div>
                 </div>
