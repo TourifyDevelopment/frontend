@@ -18,9 +18,20 @@ export const containerSlice = createSlice({
         select: (state, action) => {
             console.log(action)
             state.forEach((e) => e.isSelected = e.id === action.payload)
+        },
 
+        moveContainer: (state, action) => {
+            const currentPosition = action.payload.currenPosition;
+            const newPosition = action.payload.newPosition;
+            if (currentPosition < newPosition) {
+                newPosition--;
+            }
+            const e = state[currentPosition];
+            state.splice(currentPosition, 1);
+            state.splice(newPosition, 0, e)
+        },
 
-        }
+        
     }
 });
 

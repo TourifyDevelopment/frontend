@@ -8,6 +8,8 @@ import { Provider } from 'react-redux'
 import store from '../features/store';
 
 function Editor() {
+  
+  
 
   return (
     <Provider store={store}>
