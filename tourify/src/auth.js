@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { validateUrl, profilePicUrl, projectUrl, pagesUrl, containerUrl, resourcesUrl, postPageUrl, postContainerUrl, postResourceUrl } from './assets/constants/apiUrls';
 
+// Helpful functions to check if the user is logged in, has a profile picture or to create resources, pages, projects...
+
 const authChecker = {
     async check() {
         const token = localStorage.getItem('token');

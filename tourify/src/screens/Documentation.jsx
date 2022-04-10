@@ -4,11 +4,14 @@ import tut1 from "../assets/images/tutorial1.png"
 import tut2 from "../assets/images/tut2.png"
 import tut3 from "../assets/images/tut3.png"
 import tut4 from "../assets/images/tut4.png"
+import tut5 from "../assets/images/tut5.png"
 import logo from '../assets/images/logo-text.png';
 
 class Documentation extends Component {
   render() {
     return (
+      //Seite für ein kurzes Tutorial für den Editor
+
       <div className="flex justify-center">
         <div className="w-full h-full column-1 bg-[#4053A9] flex-col flex ">
           <div className='flex justify-between'>
@@ -37,16 +40,17 @@ class Documentation extends Component {
             <img className="rounded-lg mt-10" src={tut4} alt="Editor" />
             <p className='text-white mb-3'>Bild 1.4 - Editor page</p>
             <p className="text-white mb-3 text-2xl">Sobald man ein Projekt erstellt hat, kann man dieses im Editor bearbeiten. <br /> 
-              Hier kann man Elemente wie Bilder, Videos und Audio-Dateien per drag and drop hinzufügen. 
+              Hier kann man Elemente wie Bilder, Videos und Audio-Dateien per drag and drop hinzufügen. Auf der rechten Seite kann man dann noch ihre 
+              Eigenschaften Anpassen.
             </p>
 
 
-            <img className="rounded-lg mt-10" src={tut4} alt="Editor" />
+            <img className="rounded-lg mt-10" src={tut5} alt="Editor" />
             <p className='text-white mb-3'>Bild 1.4 - Editor page</p>
-            <p className="text-white mb-3 text-2xl"> Hier ist eine Beispielseite für ein Museum erstellt worden. <br /> 
+            <p className="text-white mb-3 text-2xl"> Hier wurde beispielsweiße ein Video eingefügt, die Seite könnte für eine Disco erstellt werden. <br /> 
               Anschließend kann man die Station abspeichern und ein QR-Code wird generiert, welcher auf diese Seite verweißt.
             </p>
-            
+          
           </div>
 
         </div>

@@ -9,6 +9,7 @@ function Project(props) {
     const user = props.user;
     let createdByYouText;
 
+    // Check if the user created this project or not
     if (user && user.username == project.owner) {
         createdByYouText = 'Dieses Projekt hast du erstellt'
     } else {
@@ -16,7 +17,7 @@ function Project(props) {
     }
 
     return (
-        <Link to={"/editor/" + project._id}>
+        <Link to={"/view/" + project._id + '/' + project.pageId}>
             <div className='w-1/2 p-4'>
                 <img className=" rounded-md" src={project.mapBlob} alt="images" />
                 <div className="flex justify-between items-center mt-1">

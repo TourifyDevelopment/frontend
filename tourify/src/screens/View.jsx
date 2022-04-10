@@ -8,6 +8,7 @@ import Image from '../components/editor/templates_rendered/Image';
 import Video from '../components/editor/templates_rendered/Video';
 
 function View() {
+    // Renders a project.
     const [pages, setPages] = useState([]);
     const [containers, setContainers] = useState([]);
     const [resources, setResources] = useState([])
@@ -19,6 +20,7 @@ function View() {
     }
 
     useEffect(() => {
+        // Loads all neccessary pages, containers and resources
         getPagesOfProject(params.projectId).then(res => {
             if (res) {
                 setPages(res.data)
@@ -63,7 +65,7 @@ function View() {
                         switch (r.type) {
                             case 'Text':
                                 return <Text value={r.blob} style={r.style}></Text>
-                            case 'Title':
+                            case 'Heading':
                                 return <Title value={r.blob} style={r.style}></Title>
                             case 'Image':
                                 return <Image value={r.blob} style={r.style}></Image>

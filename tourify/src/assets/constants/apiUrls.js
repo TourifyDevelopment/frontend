@@ -1,3 +1,5 @@
+// Important URL's and URL builders
+
 const _apiUrl = 'http://10.10.30.19';
 const _authUrl = `${_apiUrl}/auth`;
 
