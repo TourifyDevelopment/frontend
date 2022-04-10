@@ -9,7 +9,7 @@ import axios from 'axios';
 import { pagesUrl, projectUrl } from '../assets/constants/apiUrls';
 
 class Projects extends Component {
-
+  // This page displays all created projects by everyone. A user can than view a project also withour registration or login.
   constructor(props) {
     super(props);
 
@@ -27,8 +27,10 @@ class Projects extends Component {
   }
 
   componentDidMount() {
+    // Check if user is logged in
     authChecker.check().then((isAuthenticated) => {
       if (isAuthenticated) {
+        // If the user is logged in show him the button to create a new project
         this.setState({ user: isAuthenticated })
         this.setState({
           newProjectModal: <button
@@ -39,6 +41,7 @@ class Projects extends Component {
             Neues Projekt erstellen
           </button>
         })
+        // Does the user has a profile picture? If so display it, else display a profile image from dicebear
         getProfilePic().then((data) => {
           console.log(data);
           console.log(isAuthenticated)
@@ -59,6 +62,7 @@ class Projects extends Component {
 
 
     axios.get(projectUrl()).then(res => {
+      // Load all created projects and set the state
       if (res.status === 200) {
         console.log(res.data);
         console.log(res);
@@ -77,6 +81,7 @@ class Projects extends Component {
   }
 
   handleNewProject() {
+    // If the user inserted all information to create a new project send a post request to create it
     createNewProject({ projectName: this.state.projectNameInput, description: this.state.projectDescInput, mapBlob: this.state.mapBlob }).then(() => {
       axios.get(projectUrl()).then(res => {
         if (res.status === 200) {
@@ -115,23 +120,20 @@ class Projects extends Component {
   }
 
   createBlob(evt) {
+    // Create a Base64 string of the uploaded image of the user for the map (preview of Project)
     var file = evt.target.files[0];
     var reader = new FileReader();
     reader.addEventListener('load', (e) => {
       const blob = new Blob([new Uint8Array(e.target.result)], { type: file.type });
 
-      // Convert to base64
       let reader1 = new FileReader();
       reader1.readAsDataURL(blob);
 
       reader1.onload = () => {
         let image1 = new Image();
         image1.src = reader1.result;
-        document.body.appendChild(image1);
         let imageBase64 = reader1.result;
         console.log(imageBase64);
-        // Do something with the string
-        //register(imageBase64);
         this.setState({ mapBlob: imageBase64 });
       };
     });
@@ -168,32 +170,36 @@ class Projects extends Component {
                   </div>
                   {/*body*/}
                   <div className="relative p-6 flex-auto">
+                    <p className="my-4 text-slate-500 text-lg leading-relaxed text-red-500">
+                      Achtung: Der Editor ist rein experimentell! Es lassen sich keine Daten dauerhaft speichern! Zudem kann es im Editor zu Fehlern kommen!
+                    </p>
                     <p className="my-4 text-slate-500 text-lg leading-relaxed">
                       In diesem Popup kannst du ein neues Projekt erstellen. Dir steht ein Titel, eine Beschreibung und noch eine Foto (Map) für dein Projekt zur Verfügung!
                     </p>
-                    <div class="md:w-1/3">
-                      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                    <div>
+                      <label class="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4" for="inline-full-name">
                         Titel deines Projekts
                       </label>
                     </div>
-                    <div class="md:w-2/3">
+                    <div>
                       <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="title" name="name" type="text" placeholder="Titel" onChange={evt => this.setState({ projectNameInput: evt.target.value })} required></input>
                     </div>
 
-                    <div class="md:w-1/3">
-                      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                    <div>
+                      <label class="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4" for="inline-full-name">
                         Beschreibung deines Projekts (optional)
                       </label>
                     </div>
-                    <div class="md:w-2/3">
+                    <div>
                       <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="description" name="description" type="text" placeholder="Beschreibung" onChange={evt => this.setState({ projectDescInput: evt.target.value })} required></input>
                     </div>
-                    <div class="md:w-1/3">
-                      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                    
+                    <div>
+                      <label class="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4" for="inline-full-name">
                         Die Map welche du verwenden möchstest: Auf dieser Map kannst du dann deine eigenen Points setzen.
                       </label>
                     </div>
-                    <div class="md:w-2/3">
+                    <div>
                       <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="map" name="map" type="file" placeholder="Map" onChange={evt => this.createBlob(evt)} required></input>
                     </div>
                   </div>
