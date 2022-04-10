@@ -1,5 +1,9 @@
 import { getTextProperties } from "./textProperties"
 import { getTitleProperties } from "./titleProperties"
+import { getLinkProperties } from "./linkProperties"
+import { getImageProperties } from "./imageProperties"
+import { getVideoProperties } from "./videoProperties"
+import { getContainerProps } from "./containerProperties"
 
 export const templateTypes = {
     TITLE: 'Title',
@@ -20,14 +24,13 @@ export const templateTypeList = [
 ]
 
 export const getPropertiesByType = (type) => {
-    //TODO Change properties
     switch (type) {
         case templateTypes.TITLE: return getTitleProperties()
         case templateTypes.TEXT: return getTextProperties();
-        case templateTypes.IMAGE: return getTextProperties();
-        case templateTypes.VIDEO: return getTextProperties();
-        case templateTypes.LINK: return getTextProperties();
-        case templateTypes.CONTAINER: return getTextProperties();
+        case templateTypes.IMAGE: return getImageProperties();
+        case templateTypes.VIDEO: return getVideoProperties();
+        case templateTypes.LINK: return getLinkProperties();
+        case templateTypes.CONTAINER: return getContainerProps();
         default: return undefined;
     }
 }

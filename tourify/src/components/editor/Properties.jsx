@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { selectSelected } from '../../features/slices/containerSlice';
+import { editProps, selectSelected } from '../../features/slices/containerSlice';
 import { getPropertiesStructure } from '../../models/editor/properties';
 import { getTitleProperties } from '../../models/editor/titleProperties';
 import '../../style/animations.css';
@@ -9,10 +9,9 @@ import TreeView, { TreeHeading } from '../TreeView';
 function Properties() {
     const dispatch = useDispatch();
     const container = useSelector(selectSelected);
-    console.log(container)
     let properties = {};
-    if (container !== undefined){
-        properties = container.props;    
+    if (container !== undefined) {
+        properties = container.props;
     }
     const structure = getPropertiesStructure();
     const layoutProps = {};
@@ -37,23 +36,18 @@ function Properties() {
         }
     })
 
-    const [isVisible, setIsVisible] = useState(true);
     const [propsState, setPropsState] = useState({ ...layoutProps, ...containerProps, ...fontProps })
 
     const handlePropChange = (prop, value) => {
+        
         const obj = {};
-        obj[prop] = value;
-        setPropsState(prevProps => {
+        obj[prop] = value.toString() + 'px';
+        console.log(value);
+        const props = {...properties, ...obj}
+        console.log(props);
+        //properties[prop] = value
 
-            const p = {
-                ...prevProps,
-                ...obj
-            }
-
-          
-            return p;
-        })
-
+        dispatch(editProps({ id: container.id, props}))
     }
 
     /**
@@ -88,7 +82,6 @@ function Properties() {
     //renders a prop with a input value
     const renderInput = (prop) => {
         const value = propsState[prop]
-       
         return (
             <div key={prop} className='flex justify-between px-2 item-center py-1'>
                 <p>{prop}</p>

@@ -8,9 +8,7 @@ function EditorInput(props) {
 
     useEffect(() => {
         textareaRef.current.select();
-        
     }, [])
-
 
     const handleBlur = (evt) => {
         if (evt.key === 'Escape') {

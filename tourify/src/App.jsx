@@ -15,13 +15,17 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="" element={<LandingPage/>}></Route>
-        <Route path="register" element={<Register/>}></Route>
-        <Route path="login" element={<Login/>}></Route>
+        <Route path="" element={<LandingPage />}></Route>
+        <Route path="register" element={<Register />}></Route>
+        <Route path="login" element={<Login />}></Route>
         <Route path="logout" element={<Logout />}></Route>
-        <Route path="projects" element={<Projects/>}></Route>
-        <Route path="docs" element={<Documentation/>}></Route>
-        <Route path="editor" element={<Editor/>}></Route>
+        <Route path="projects" element={<Projects />}></Route>
+        <Route path="docs" element={<Documentation />}></Route>
+        <Route path="editor" element={<Editor />}>
+          <Route path=":projectId" element={<Editor />}>
+            <Route path=":pageId" element={<Editor />}></Route>
+          </Route>
+        </Route>
         <Route path="view" element={<View />}>
           <Route path=":projectId" element={<View />}>
             <Route path=":pageId" element={<View />}></Route>

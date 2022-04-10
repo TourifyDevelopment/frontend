@@ -7,8 +7,9 @@ export const containerSlice = createSlice({
     initialState: [],
     reducers: {
         addContainer: (state, action) => {
+
             const props = getPropertiesByType(action.payload.type);
-            state.push({ ...action.payload, isSelected: false, props});
+            state.push({...action.payload, isSelected: false, props});
         },
 
         removeContainer: (state, action) => {
@@ -16,7 +17,6 @@ export const containerSlice = createSlice({
         },
 
         select: (state, action) => {
-            console.log(action)
             state.forEach((e) => e.isSelected = e.id === action.payload)
         },
 
@@ -28,14 +28,18 @@ export const containerSlice = createSlice({
             }
             const e = state[currentPosition];
             state.splice(currentPosition, 1);
-            state.splice(newPosition, 0, e)
+            state.splice(newPosition, 0, e);
         },
 
-        
+        editProps: (state, action) => {
+            const id = action.payload.id;
+            const props = action.payload.props;
+
+        }
     }
 });
 
-export const { addContainer, removeContainer, select } = containerSlice.actions;
+export const { addContainer, removeContainer, select, editProps } = containerSlice.actions;
 
 export const selectContainer = (state) => state.container;
 

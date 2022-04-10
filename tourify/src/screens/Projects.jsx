@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import profilePic from '../assets/images/dummy_avatar.png'
 import getProjects from '../models/projects';
 import Project from '../components/Project';
-import { authChecker, getProfilePic, createNewProject } from '../auth';
+import { authChecker, getProfilePic, createNewProject, createNewPage } from '../auth';
 import SidebarLoggedIn from '../components/projects/SidebarLoggedIn';
 import SidebarNotLoggedIn from '../components/projects/SidebarNotLoggedIn';
 import axios from 'axios';
-import { projectUrl } from '../assets/constants/apiUrls';
+import { pagesUrl, projectUrl } from '../assets/constants/apiUrls';
 
 class Projects extends Component {
 
@@ -72,6 +72,18 @@ class Projects extends Component {
       axios.get(projectUrl()).then(res => {
         if (res.status === 200) {
           console.log(res.data)
+          res.data.forEach(e => {
+            if (e.projectName === this.state.projectNameInput) {
+              createNewPage({ projectId: e._id, name: 'default', displayName: 'Default', mapX: 0, mapY: 0 })
+                .then(() => {
+                  axios.get(pagesUrl(e._id))
+                    .then(() => {
+                      
+                    })
+                });
+
+            }
+          });
           this.setState({ projects: res.data });
           this.setState({ showModal: false });
         }
@@ -86,22 +98,22 @@ class Projects extends Component {
     var file = evt.target.files[0];
     var reader = new FileReader();
     reader.addEventListener('load', (e) => {
-        const blob = new Blob([new Uint8Array(e.target.result)], { type: file.type });
+      const blob = new Blob([new Uint8Array(e.target.result)], { type: file.type });
 
-        // Convert to base64
-        let reader1 = new FileReader();
-        reader1.readAsDataURL(blob);
+      // Convert to base64
+      let reader1 = new FileReader();
+      reader1.readAsDataURL(blob);
 
-        reader1.onload = () => {
-            let image1 = new Image();
-            image1.src = reader1.result;
-            document.body.appendChild(image1);
-            let imageBase64 = reader1.result;
-            console.log(imageBase64);
-            // Do something with the string
-            //register(imageBase64);
-            this.setState({mapBlob: imageBase64});
-        };
+      reader1.onload = () => {
+        let image1 = new Image();
+        image1.src = reader1.result;
+        document.body.appendChild(image1);
+        let imageBase64 = reader1.result;
+        console.log(imageBase64);
+        // Do something with the string
+        //register(imageBase64);
+        this.setState({ mapBlob: imageBase64 });
+      };
     });
 
     reader.readAsArrayBuffer(file);

@@ -5,7 +5,6 @@ import axios from 'axios';
 import { loginUrl, registerUrl } from '../assets/constants/apiUrls';
 
 function Register() {
-  // TODO: Change error Message with design
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');

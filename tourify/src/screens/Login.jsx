@@ -11,7 +11,6 @@ function Login() {
 
     const handleSubmit = evt => {
         evt.preventDefault();
-        //TODO: check if username and password are valid
         axios.post(loginUrl(), {
             username: username,
             password: password

@@ -1,10 +1,14 @@
 import React from 'react'
-import FileUploader from '../FileUploader'
+import { useSelector } from 'react-redux'
+import { selectContainerById } from '../../../features/slices/containerSlice'
 
-function Image() {
+
+function Image(props) {
+  const container = useSelector(state => selectContainerById(state, props.id));
+
   return (
     <div className='flex flex-col'>
-        <FileUploader></FileUploader>
+      <img src={container.data} />
     </div>
   )
 }

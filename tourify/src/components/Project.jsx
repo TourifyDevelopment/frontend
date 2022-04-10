@@ -17,7 +17,7 @@ function Project(props) {
     }
 
     return (
-        <Link to={"/view/" + project._id}>
+        <Link to={"/editor/" + project._id + '/' + }>
             <div className='w-1/2 p-4'>
                 {/*<img className=" rounded-md" src={img} alt="images" />*/}
                 <img className=" rounded-md" src={project.mapBlob} alt="images" />

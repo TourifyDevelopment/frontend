@@ -1,16 +1,15 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getTitleProperties } from '../../../models/editor/titleProperties';
-import { select } from '../../../features/slices/containerSlice';
+import { select, selectContainerById } from '../../../features/slices/containerSlice';
 import EditorInput from '../EditorInput';
 
 function Title(props) {
     const dispatch = useDispatch();
-    const style = getTitleProperties();
+    const container = useSelector(state => selectContainerById(state, props.id))
+    const style = container.props;
     
     const handleClick = () => {
-        
-        console.log(props.id)
         dispatch(select(props.id))
     }
 
