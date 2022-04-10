@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { validateUrl, profilePicUrl, projectUrl, pagesUrl, containerUrl, resourcesUrl, postPageUrl } from './assets/constants/apiUrls';
+import { validateUrl, profilePicUrl, projectUrl, pagesUrl, containerUrl, resourcesUrl, postPageUrl, postContainerUrl, postResourceUrl } from './assets/constants/apiUrls';
 
 const authChecker = {
     async check() {
@@ -68,6 +68,36 @@ const createNewPage = async data => {
     return false
 }
 
+const createNewContainer = async data => {
+    const token = localStorage.getItem('token');
+    if (token === null) return false;
+
+    let res = await axios.post(postContainerUrl(), data,
+        {
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+
+    if (res.status === 201) {
+        return true;
+    }
+    return false
+}
+
+const createNewResource = async data => {
+    const token = localStorage.getItem('token');
+    if (token === null) return false;
+
+    let res = await axios.post(postResourceUrl(), data,
+        {
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+
+    if (res.status === 201) {
+        return true;
+    }
+    return false
+}
+
 const getPagesOfProject = async projectId => {
     let res = await axios.get(pagesUrl(projectId))
 
@@ -95,4 +125,4 @@ const getResourcesOfContainer = async containerId => {
     return false
 }
 
-export { authChecker, getProfilePic, createNewProject, getPagesOfProject, getContainersOfPage, getResourcesOfContainer, createNewPage };
+export { authChecker, getProfilePic, createNewProject, getPagesOfProject, getContainersOfPage, getResourcesOfContainer, createNewPage, createNewContainer, createNewResource };

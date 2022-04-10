@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { selectContainerById } from '../../../features/slices/containerSlice'
 import ReactPlayer from 'react-player'
 
-
+//Template of a video. VideoPlayer gets added
 function Video(props) {
   const container = useSelector(state => selectContainerById(state, props.id))
 

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addContainer } from '../../features/slices/containerSlice';
 import { templateTypes } from '../../models/editor/templateTypes';
 
-
+//Component for uploading file -> video or image
 function FileUploader(props) {
     const [file, setFile] = useState(null)
     console.log(props)

@@ -4,6 +4,7 @@ import { getTitleProperties } from '../../../models/editor/titleProperties';
 import { select, selectContainerById } from '../../../features/slices/containerSlice';
 import EditorInput from '../EditorInput';
 
+//Template of a title. Adds a title that is editable
 function Title(props) {
     const dispatch = useDispatch();
     const container = useSelector(state => selectContainerById(state, props.id))

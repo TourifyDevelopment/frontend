@@ -10,15 +10,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContainer, selectContainer } from '../../features/slices/containerSlice';
 import Image from './templates/Image';
 import Link from './templates/Link';
+import {useParams} from 'react-router-dom'
 
-
+/**
+ * Component where template/container can get dropped.
+ */
 function Sheet(props) {
+    const params = useParams();
+    console.log(params);
     const [showUploader, setShowUploader] = useState(false);
     const containerList = useSelector(selectContainer);
     const dispatch = useDispatch()
     let counter = 0;
     const [fileUploaderType, setFileUploaderType] = useState('')
-    console.log(containerList)
+    
 
     const [{ isOver }, drop] = useDrop(
         () => ({
@@ -44,7 +49,7 @@ function Sheet(props) {
             setFileUploaderType(type);
             setShowUploader(true);
         } else {
-            dispatch(addContainer({ type, data: '' }))
+            dispatch(addContainer({ type, data: '', id: counter, pageId: params.projectId }))
         }
 
         counter++;
@@ -84,7 +89,7 @@ function Sheet(props) {
         setShowUploader(false);
 
         if (file) {
-            dispatch(addContainer({ type, data: file }))
+            dispatch(addContainer({ type, data: file, id: counter }))
             console.log(type);
         }
     }

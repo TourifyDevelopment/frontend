@@ -4,6 +4,9 @@ import { useDispatch } from 'react-redux';
 import { select } from '../../../features/slices/containerSlice';
 import EditorInput from '../EditorInput';
 
+/**
+ * Template of a link
+ */
 function Link(props) {
   const dispatch = useDispatch();
   const style = getLinkProperties();

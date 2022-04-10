@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import profilePic from '../assets/images/dummy_avatar.png'
-import getProjects from '../models/projects';
 import Project from '../components/Project';
 import { authChecker, getProfilePic, createNewProject, createNewPage } from '../auth';
 import SidebarLoggedIn from '../components/projects/SidebarLoggedIn';

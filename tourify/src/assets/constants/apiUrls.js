@@ -1,4 +1,4 @@
-const _apiUrl = 'http://172.25.51.144';
+const _apiUrl = 'http://10.10.30.19';
 const _authUrl = `${_apiUrl}/auth`;
 
 
@@ -21,6 +21,8 @@ export const projectUrl = () => _projectUrl;
 export const pagesUrl = projectId => _pagesUrl + projectId;
 export const postPageUrl = () => _pagesUrl;
 export const containerUrl = pageId => _containerUrl + pageId;
+export const postContainerUrl = () => _containerUrl;
 export const resourcesUrl = containerId => _resourcesUrl + containerId;
+export const postResourceUrl = () => _resourcesUrl;
 export const validateUrl = () => _validateUrl;
 export const profilePicUrl = () => _profilePicUrl;

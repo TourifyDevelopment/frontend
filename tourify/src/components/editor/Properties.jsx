@@ -6,6 +6,11 @@ import { getTitleProperties } from '../../models/editor/titleProperties';
 import '../../style/animations.css';
 import TreeView, { TreeHeading } from '../TreeView';
 
+/**
+ * Renders the sidebar of the editor screen. On a click of a container,
+ * the properties of that container should get visible. 
+ * CANNOT CHANGE PROPERTIES YET
+ */
 function Properties() {
     const dispatch = useDispatch();
     const container = useSelector(selectSelected);
@@ -38,8 +43,11 @@ function Properties() {
 
     const [propsState, setPropsState] = useState({ ...layoutProps, ...containerProps, ...fontProps })
 
+    /**
+     * Gets fired when a prop gets changed.
+     * Changes the props of the container in the redux store
+     */
     const handlePropChange = (prop, value) => {
-        
         const obj = {};
         obj[prop] = value.toString() + 'px';
         console.log(value);
@@ -91,6 +99,7 @@ function Properties() {
     }
 
     //renders a prop with fixed options
+    //NOT IMPLEMENTED YET
     const renderRadio = (prop) => {
         const value = propsState[prop]
 
@@ -116,6 +125,7 @@ function Properties() {
 
     return (
         <div className="w-72 p-2" >
+            <h2 className='text-2xl font-bold mb-2'>Properties</h2>
             <TreeView>
                 {
                     Object.keys(fontProps).length !== 0 ?

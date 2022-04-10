@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import TextareaAutosize from 'react-textarea-autosize';
 
+//Component for editing a text
 function EditorInput(props) {
     const [value, setValue] = useState(props.value);
     const [isEditing, setIsEditing] = useState(true);

@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import '../style/treeList.css';
 
+/**
+ * Component for a treelist. List in list 
+ */
 function TreeView(props) {
 
     return (
@@ -16,7 +19,9 @@ function TreeView(props) {
 export default TreeView;
 
 
-
+/**
+ * A heading for the list
+ */
 export function TreeHeading(props) {
     const [isExpanded, setIsExpanded] = useState(false);
 
