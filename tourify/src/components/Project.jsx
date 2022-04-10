@@ -19,7 +19,8 @@ function Project(props) {
     return (
         <Link to={"/view/" + project._id}>
             <div className='w-1/2 p-4'>
-                <img className=" rounded-md" src={img} alt="images" />
+                {/*<img className=" rounded-md" src={img} alt="images" />*/}
+                <img className=" rounded-md" src={project.mapBlob} alt="images" />
                 <div className="flex justify-between items-center mt-1">
                     <p className='text-[32px] pl-2'>{title}</p>
                     <div className="rounded-md w-fit color-black  px-3 text-xl">

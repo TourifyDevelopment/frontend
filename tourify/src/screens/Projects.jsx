@@ -16,10 +16,12 @@ class Projects extends Component {
     this.state = {
       width: 200,
       sidebar: null,
+      newProjectModal: null,
       projects: [],
       showModal: false,
       projectNameInput: '',
       projectDescInput: '',
+      mapBlob: '',
       user: {}
     }
   }
@@ -27,7 +29,16 @@ class Projects extends Component {
   componentDidMount() {
     authChecker.check().then((isAuthenticated) => {
       if (isAuthenticated) {
-        this.setState({user: isAuthenticated})
+        this.setState({ user: isAuthenticated })
+        this.setState({
+          newProjectModal: <button
+            className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button"
+            onClick={() => this.setState({ showModal: true })}
+          >
+            Open regular modal
+          </button>
+        })
         getProfilePic().then((data) => {
           console.log(data);
           console.log(isAuthenticated)
@@ -40,8 +51,9 @@ class Projects extends Component {
           this.setState({ sidebar: <SidebarLoggedIn profilePic={profPic} user={isAuthenticated} /> })
         })
       } else {
-        this.setState({user: {}})
+        this.setState({ user: {} })
         this.setState({ sidebar: <SidebarNotLoggedIn /> })
+        this.setState({ newProjectModal: null })
       }
     });
 
@@ -56,7 +68,7 @@ class Projects extends Component {
   }
 
   handleNewProject() {
-    createNewProject({ projectName: this.state.projectNameInput, description: this.state.projectDescInput }).then(() => {
+    createNewProject({ projectName: this.state.projectNameInput, description: this.state.projectDescInput, mapBlob: this.state.mapBlob }).then(() => {
       axios.get(projectUrl()).then(res => {
         if (res.status === 200) {
           console.log(res.data)
@@ -70,11 +82,37 @@ class Projects extends Component {
     console.log(this.state.projectDescInput)
   }
 
+  createBlob(evt) {
+    var file = evt.target.files[0];
+    var reader = new FileReader();
+    reader.addEventListener('load', (e) => {
+        const blob = new Blob([new Uint8Array(e.target.result)], { type: file.type });
+
+        // Convert to base64
+        let reader1 = new FileReader();
+        reader1.readAsDataURL(blob);
+
+        reader1.onload = () => {
+            let image1 = new Image();
+            image1.src = reader1.result;
+            document.body.appendChild(image1);
+            let imageBase64 = reader1.result;
+            console.log(imageBase64);
+            // Do something with the string
+            //register(imageBase64);
+            this.setState({mapBlob: imageBase64});
+        };
+    });
+
+    reader.readAsArrayBuffer(file);
+  }
+
   render() {
     return (
       <div className='flex'>
         <div className="flex flex-col items-center py-12 px-6 space-y-8">
           {this.state.sidebar}
+          {this.state.newProjectModal}
         </div>
 
         <div className="h-screen border-l border-grey-600 p-12 flex flex-wrap">
@@ -117,6 +155,14 @@ class Projects extends Component {
                     </div>
                     <div class="md:w-2/3">
                       <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="description" name="description" type="text" placeholder="Beschreibung" onChange={evt => this.setState({ projectDescInput: evt.target.value })} required></input>
+                    </div>
+                    <div class="md:w-1/3">
+                      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                        Die Map welche du verwenden möchstest: Auf dieser Map kannst du dann deine eigenen Points setzen.
+                      </label>
+                    </div>
+                    <div class="md:w-2/3">
+                      <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="map" name="map" type="file" placeholder="Map" onChange={evt => this.createBlob(evt)} required></input>
                     </div>
                   </div>
                   {/*footer*/}
