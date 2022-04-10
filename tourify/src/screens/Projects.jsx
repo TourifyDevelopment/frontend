@@ -62,7 +62,16 @@ class Projects extends Component {
       if (res.status === 200) {
         console.log(res.data);
         console.log(res);
-        this.setState({ projects: res.data })
+        res.data.forEach(e => {
+          axios.get(pagesUrl(e._id))
+            .then(res2 => {
+              console.log(res2)
+              console.log(res2.data)
+              e.pageId = res2.data[0]['_id']
+              console.log(e)
+              this.setState({ projects: [...this.state.projects, e] });
+            })
+        });
       }
     })
   }
@@ -71,20 +80,31 @@ class Projects extends Component {
     createNewProject({ projectName: this.state.projectNameInput, description: this.state.projectDescInput, mapBlob: this.state.mapBlob }).then(() => {
       axios.get(projectUrl()).then(res => {
         if (res.status === 200) {
+          this.setState({ projects: [] })
           console.log(res.data)
           res.data.forEach(e => {
             if (e.projectName === this.state.projectNameInput) {
-              createNewPage({ projectId: e._id, name: 'default', displayName: 'Default', mapX: 0, mapY: 0 })
-                .then(() => {
-                  axios.get(pagesUrl(e._id))
-                    .then(() => {
-                      
-                    })
-                });
-
+              createNewPage({ projectId: e._id, name: 'default' + Math.floor(Math.random() * 1000), displayName: 'Default', mapX: 0, mapY: 0 }).then(() => {
+                axios.get(pagesUrl(e._id))
+                  .then(res2 => {
+                    console.log(res2)
+                    console.log(res2.data)
+                    e.pageId = res2.data[0]['_id']
+                    console.log(e)
+                    this.setState({ projects: [...this.state.projects, e] });
+                  })
+              });
+              return;
             }
+            axios.get(pagesUrl(e._id))
+              .then(res2 => {
+                console.log(res2)
+                console.log(res2.data)
+                e.pageId = res2.data[0]['_id']
+                console.log(e)
+                this.setState({ projects: [...this.state.projects, e] });
+              })
           });
-          this.setState({ projects: res.data });
           this.setState({ showModal: false });
         }
       })

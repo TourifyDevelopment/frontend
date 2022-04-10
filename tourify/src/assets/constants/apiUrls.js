@@ -1,4 +1,4 @@
-const _apiUrl = 'http://10.10.30.19';
+const _apiUrl = 'http://172.25.51.144';
 const _authUrl = `${_apiUrl}/auth`;
 
 
