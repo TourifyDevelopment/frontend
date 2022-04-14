@@ -11,7 +11,7 @@ function View() {
     // Renders a project.
     const [pages, setPages] = useState([]);
     const [containers, setContainers] = useState([]);
-    const [resources, setResources] = useState([])
+    const [resources, setResources] = useState([]);
     const params = useParams();
     const navigate = useNavigate();
 
@@ -28,20 +28,24 @@ function View() {
         })
 
         if (params.pageId) {
+            setResources([])
+            setContainers([])
             getContainersOfPage(params.pageId).then(res => {
-                if (res) {
+                console.log(res)
+                if (res.status === 200) {
                     setContainers(res.data)
                     res.data.forEach(element => {
                         getResourcesOfContainer(element.resourceId).then(res2 => {
-                            if(res2) {
-                                setResources([...resources, res2.data])
-                                console.log(res2.data)
+                            if(res2.status === 200) {
+                                
+                                setResources(resources => [...resources, res2.data]);
                             }
                         })
                     });
                 }
             })
         } else {
+            setResources([])
             setContainers([])
         }
     }, [params.projectId, params.pageId])
@@ -58,21 +62,19 @@ function View() {
                 }
             </div>
 
-            <div className="h-screen border-l border-grey-600 p-12 flex flex-wrap">
+            <div className="h-screen border-l border-grey-600 p-12">
                 {
                     resources.map(r => {
-                        console.log(r)
-                        switch (r.type) {
-                            case 'Text':
-                                return <Text value={r.blob} style={r.style}></Text>
-                            case 'Heading':
-                                return <Title value={r.blob} style={r.style}></Title>
-                            case 'Image':
-                                return <Image value={r.blob} style={r.style}></Image>
-                            case 'Video':
-                                return <Video value={r.blob} style={r.style}></Video>
-                            default:
-                                break;
+                        //console.log(resources)
+                        console.log(r);
+                        if (r.type === 'Text') {
+                            return <Text key={r._id} value={r.blob} style={r.style}></Text>
+                        } else if (r.type === 'Header') {
+                            return <Title key={r._id} value={r.blob} style={r.style}></Title>
+                        } else if (r.type === 'Image') {
+                            return <Image key={r._id} value={r.blob} style={r.style}></Image>
+                        } else if (r.type === 'Video') {
+                            return <Video key={r._id} value={r.blob} style={r.style}></Video>
                         }
                     })
                 }
